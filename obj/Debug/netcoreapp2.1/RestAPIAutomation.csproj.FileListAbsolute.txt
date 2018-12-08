@@ -1,0 +1,14 @@
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.deps.json
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.dll
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.pdb
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.csprojAssemblyReference.cache
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.csproj.CoreCompileInputs.cache
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.AssemblyInfoInputs.cache
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.AssemblyInfo.cs
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.dll
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/obj/Debug/netcoreapp2.1/RestAPIAutomation.pdb
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.runtimeconfig.json
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.runtimeconfig.dev.json
