@@ -5,9 +5,9 @@ namespace RestAPIAutomation
 {
     public class APIAutomation :BaseClass
     {
-        public APIAutomation:BaseClass
+        public  APIAutomation() : base()
         {
-            BaseClass();
+            Console.Write("inside class cons");
         }
         [Fact]
         public void GetAPIAutomation()
