@@ -3,8 +3,12 @@ using Xunit;
 
 namespace RestAPIAutomation
 {
-    public class APIAutomation
+    public class APIAutomation :BaseClass
     {
+        public APIAutomation:BaseClass
+        {
+            BaseClass();
+        }
         [Fact]
         public void GetAPIAutomation()
         {
