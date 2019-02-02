@@ -1,18 +1,21 @@
+using Newtonsoft.Json;
+
 public class ResponseClass{
 
-    public string APIURL { get; set; }
+    [JsonProperty(PropertyName ="ResponseUri")]
+        public string APIURL { get; set; }
+
+    [JsonProperty(PropertyName ="ResponseStatus")]
     public string Result { get; set; }
-    public string StatusCode { get; set; }
-    public string ResponseTime { get; set; }
+
+    [JsonProperty(PropertyName ="StatusCode")]
+        public string StatusCode { get; set; }
+
+   // [JsonProperty(PropertyName ="ResponseUri")]
+   // public string ResponseTime { get; set; }
+
+    [JsonProperty(PropertyName ="Content")]
     public string Response { get; set; }
 
-    public void SetResponseClass(string _apiurl,string _result,string _statuscode,string _responsetime,string _response)
-    {
-        APIURL = _apiurl;
-        Result = _result;
-        StatusCode = _statuscode;
-        ResponseTime = _responsetime;
-        string Response = _response;
-
-    }
+  
 }

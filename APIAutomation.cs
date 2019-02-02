@@ -4,6 +4,7 @@ using RestSharp;
 using  RestSharp.Deserializers;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace RestAPIAutomation
 {
@@ -38,17 +39,12 @@ namespace RestAPIAutomation
             _responseclass.Result = response.ResponseStatus.ToString();
             _responseclass.APIURL = response.ResponseUri.ToString();
             _responseclass.Response = response.Content;
-
-
+            _responselist.Add(_responseclass);
 
          }
-
-
-
-
+        
         }
-
-        private IRestResponse GetResponse(Dictionary<string, string> item)
+        public IRestResponse GetResponse(Dictionary<string, string> item)
         {
                     
           RestClient _client = new RestClient(BaseURL);
@@ -81,10 +77,13 @@ namespace RestAPIAutomation
                 break;
 
             }
-              _response = _client.Execute(_request);
-          
+                Stopwatch _stopwatch = new Stopwatch();
+                _stopwatch.Start();
+                _response = _client.Execute(_request);
+                _stopwatch.Stop();
+                var responsetime = _stopwatch.Elapsed.TotalSeconds;
                 return _response;
+        }
                
         }
     }
-}
