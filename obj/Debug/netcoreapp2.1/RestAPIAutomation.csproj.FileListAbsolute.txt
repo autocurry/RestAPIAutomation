@@ -12,3 +12,5 @@
 /home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
 /home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.runtimeconfig.json
 /home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/RestAPIAutomation.runtimeconfig.dev.json
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/Datafiles/requests.json
+/home/sandeep/Desktop/CodePractice/RestAPIAutomation/bin/Debug/netcoreapp2.1/Datafiles/appsettings.json

@@ -2,6 +2,8 @@
 using Xunit;
 using RestSharp;
 using  RestSharp.Deserializers;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace RestAPIAutomation
 {
@@ -11,35 +13,78 @@ namespace RestAPIAutomation
         {
             
         }
+        
         [Fact]
         public void GetAPIAutomation()
         {
+            BaseAction action = new BaseAction();
+           var AllRequests = action.ReadAllRequests();
+           IRestResponse response;
+           List<ResponseClass> _responselist;
+           ResponseClass _responseclass;
+         
+         foreach(var item in AllRequests)
+         {
+             _responselist = new List<ResponseClass>();
+             _responseclass = new ResponseClass();
+
+             var requestname = item.Key;
+             var value = item.Value.ToString();
+             var _requestdetails = JsonConvert.DeserializeObject<Dictionary<string,string>>(value);
+             response = GetResponse(_requestdetails);
+
+             //getting the response of each request
+            _responseclass.StatusCode = response.StatusCode.ToString();
+            _responseclass.Result = response.ResponseStatus.ToString();
+            _responseclass.APIURL = response.ResponseUri.ToString();
+            _responseclass.Response = response.Content;
+
+
+
+         }
+
+
+
+
+        }
+
+        private IRestResponse GetResponse(Dictionary<string, string> item)
+        {
+                    
+          RestClient _client = new RestClient(BaseURL);
           
-            var url = "https://reqres.in/";
-            var firstname =string.Empty;
-            var lastname = string.Empty;
+          RestRequest _request ;       
+          IRestResponse _response; 
 
-          RestClient _client = new RestClient(url);
-          RestRequest _request = new RestRequest("/api/users/2",Method.GET);
+            var requestmethod = string.Empty;
+            if(item.Keys.Count>1)
+            {
+             requestmethod = item["requestmethod"];
+            }
 
-          var response = _client.Execute (_request);
-          string statusCode = response.StatusCode.ToString();
+            switch(requestmethod)
+            {
+                case "POST":
+                _request = new RestRequest(item["requesturl"],Method.POST);
+                break;
 
-          if(statusCode.Equals("OK"))
-          {
+                case "PUT":
+                _request = new RestRequest(item["requesturl"],Method.PUT);
+                break;
 
-                JsonDeserializer deserial = new JsonDeserializer();
-                RootObject _root = deserial.Deserialize<RootObject>(response);
+                case "DELETE":
+                _request = new RestRequest(item["requesturl"],Method.DELETE);
+                break;
 
-                firstname = _root.data.first_name;
-                lastname = _root.data.last_name;
+                default:
+                _request = new RestRequest(item["requesturl"],Method.GET);
+                break;
 
-          }
-
-          else{
-              Assert.False(false,"status code= "+statusCode);
-          }
-
+            }
+              _response = _client.Execute(_request);
+          
+                return _response;
+               
         }
     }
 }

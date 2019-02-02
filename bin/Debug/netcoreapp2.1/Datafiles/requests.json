@@ -1,0 +1,37 @@
+{
+    "listusers":
+    {
+        "requesturl":"/api/users?page=2"   
+    },
+
+    "singleuser":
+    {
+        "requesturl":"/api/users/2"   
+    },
+
+    "singleusernotfound":
+    {
+        "requesturl":"/api/users/23"   
+    },
+
+    "createuser":
+    {
+        "requesturl":"/api/users",
+        "requestmethod":"POST",
+        "requestbody":{
+            "name": "morpheus",
+            "job": "leader"
+        }
+    },
+
+    "createsingleuser":
+    {
+        "requesturl":"/api/users?page=2",
+        "requestmethod":"POST",
+        "requestbody":{
+            "name": "morpheus",
+            "job": "leader"
+        }
+    }
+
+}

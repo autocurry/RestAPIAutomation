@@ -2,6 +2,8 @@ using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 public class BaseClass
 {
@@ -10,14 +12,12 @@ public class BaseClass
     
     public BaseClass()
     {
-        Console.Write("inside base class con");
-        var builder = new ConfigurationBuilder()
-                         .AddJsonFile("appsettings.json", optional:true, reloadOnChange:true)
-                            .SetBasePath(Directory.GetCurrentDirectory())
-                                .AddEnvironmentVariables();
+          string jsonfilepath = @"./Datafiles/appsettings.json";
 
-            APIConfig = builder.Build();
-            BaseURL=APIConfig["BaseURL"]; 
+          var json = File.ReadAllText(jsonfilepath);
+
+          var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);  
+            BaseURL=values["BaseURL"]; 
     }
 
 }
