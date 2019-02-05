@@ -34,8 +34,9 @@ namespace RestAPIAutomation
              //getting the response of each request           
             _responselist.Add(_responseclass);
 
-            var createhtml = GenerateHtmlMonitorPage(_responselist);
+            
          }
+         var createhtml = GenerateJSON(_responselist);
         
         }
 

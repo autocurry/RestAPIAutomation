@@ -9,10 +9,12 @@ public class BaseClass
 {
     public static IConfiguration APIConfig {get;set;}
     public static string BaseURL {get;set;}
+
+    public string root = @"./Datafiles";
     
     public BaseClass()
     {
-          string jsonfilepath = @"./Datafiles/appsettings.json";
+          string jsonfilepath = root+"//appsettings.json";
 
           var json = File.ReadAllText(jsonfilepath);
 
@@ -20,17 +22,24 @@ public class BaseClass
             BaseURL=values["BaseURL"]; 
     }
 
-      public bool GenerateHtmlMonitorPage(List<ResponseClass> responselist)
+      public bool GenerateJSON(List<ResponseClass> responselist)
         {
             var _list = responselist;
             if(!(_list == null))
             {
-                
+                string json = JsonConvert.SerializeObject(_list.ToArray());
 
+                //write string to file
+                System.IO.File.WriteAllText(root+"//reponsemonitor.json", json);
 
-            }
 
             return true;
+
+            }
+            else {
+                return false;
+            }
+
         }
 
 
