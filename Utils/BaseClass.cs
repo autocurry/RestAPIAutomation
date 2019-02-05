@@ -20,4 +20,18 @@ public class BaseClass
             BaseURL=values["BaseURL"]; 
     }
 
+      public bool GenerateHtmlMonitorPage(List<ResponseClass> responselist)
+        {
+            var _list = responselist;
+            if(!(_list == null))
+            {
+                
+
+
+            }
+
+            return true;
+        }
+
+
 }

@@ -12,7 +12,7 @@ public class ResponseClass{
         public string StatusCode { get; set; }
 
    // [JsonProperty(PropertyName ="ResponseUri")]
-   // public string ResponseTime { get; set; }
+     public string ResponseTime { get; set; }
 
     [JsonProperty(PropertyName ="Content")]
     public string Response { get; set; }

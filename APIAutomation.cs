@@ -10,6 +10,8 @@ namespace RestAPIAutomation
 {
     public class APIAutomation :BaseClass
     {
+        ResponseClass _responseclass;
+        List<ResponseClass> _responselist = new List<ResponseClass>();
         public  APIAutomation() : base()
         {
             
@@ -19,38 +21,32 @@ namespace RestAPIAutomation
         public void GetAPIAutomation()
         {
             BaseAction action = new BaseAction();
-           var AllRequests = action.ReadAllRequests();
-           IRestResponse response;
-           List<ResponseClass> _responselist;
-           ResponseClass _responseclass;
+           var AllRequests = action.ReadAllRequests();         
          
          foreach(var item in AllRequests)
-         {
-             _responselist = new List<ResponseClass>();
-             _responseclass = new ResponseClass();
+         {    
 
              var requestname = item.Key;
              var value = item.Value.ToString();
-             var _requestdetails = JsonConvert.DeserializeObject<Dictionary<string,string>>(value);
-             response = GetResponse(_requestdetails);
+             var _requestdetails = JsonConvert.DeserializeObject<Dictionary<string,dynamic>>(value);
+             _responseclass = GetResponse(_requestdetails);
 
-             //getting the response of each request
-            _responseclass.StatusCode = response.StatusCode.ToString();
-            _responseclass.Result = response.ResponseStatus.ToString();
-            _responseclass.APIURL = response.ResponseUri.ToString();
-            _responseclass.Response = response.Content;
+             //getting the response of each request           
             _responselist.Add(_responseclass);
 
+            var createhtml = GenerateHtmlMonitorPage(_responselist);
          }
         
         }
-        public IRestResponse GetResponse(Dictionary<string, string> item)
+
+      
+        public ResponseClass GetResponse(Dictionary<string, dynamic> item)
         {
                     
           RestClient _client = new RestClient(BaseURL);
-          
-          RestRequest _request ;       
-          IRestResponse _response; 
+          _responseclass = new ResponseClass();
+          IRestResponse _response;
+          RestRequest _request ;    
 
             var requestmethod = string.Empty;
             if(item.Keys.Count>1)
@@ -81,8 +77,14 @@ namespace RestAPIAutomation
                 _stopwatch.Start();
                 _response = _client.Execute(_request);
                 _stopwatch.Stop();
-                var responsetime = _stopwatch.Elapsed.TotalSeconds;
-                return _response;
+
+                _responseclass.ResponseTime = _stopwatch.Elapsed.TotalSeconds.ToString();
+                _responseclass.StatusCode = _response.StatusCode.ToString();
+                _responseclass.Result = _response.ResponseStatus.ToString();
+                _responseclass.APIURL = _response.ResponseUri.ToString();
+                _responseclass.Response = _response.Content;
+
+                return _responseclass;
         }
                
         }
